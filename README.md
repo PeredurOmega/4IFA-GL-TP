@@ -1,7 +1,7 @@
 # Makefile
 
 ### `make`
-Generates binary files (.o) and the project executable (main)
+Generates binary files (.o) and the project executable "main";
 
 ### `make run`
 Generates the executable if it does not already exist, and executes it.
