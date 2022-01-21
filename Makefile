@@ -23,8 +23,20 @@ symbol.o: symbol.cpp
 main.o: main.cpp
 	$(CC) -o $@ -c $< $(CFLAGS)
 
+
+run: all
+	@./main
+
+rebuild: cleanall all
+
 clean:
-	rm -rf *.o
+	@rm -rf *.o
+	@echo "Binary files deleted."
 
 cleanall: clean
-	rm -rf $(EXEC)
+	@rm -rf $(EXEC)
+	@echo "Executable deleted."
+
+
+
+
