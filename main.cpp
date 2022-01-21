@@ -27,8 +27,8 @@ int main() {
         }
         auto *automaton = new Automaton(input, negativeIntegersSupport);
         automaton->run();
+        delete (automaton);
     }
-
     return 0;
 }
 

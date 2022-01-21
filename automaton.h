@@ -42,6 +42,8 @@ public:
      */
     explicit Automaton(string expr, bool negativeIntegersSupport);
 
+    ~Automaton();
+
     /**
      * Launch the Automaton to analyze expr and print the result.
      * @return False if there was no error, True otherwise.

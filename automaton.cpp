@@ -12,6 +12,18 @@ Automaton::Automaton(string expr, bool negativeIntegerSupport) {
     states.push_back(init);
 }
 
+Automaton::~Automaton() {
+    delete (lexer);
+    while (!states.empty()) {
+        delete (states.back());
+        states.pop_back();
+    }
+    while (!symbols.empty()) {
+        delete (symbols.back());
+        symbols.pop_back();
+    }
+}
+
 void Automaton::shift(Symbol *symbol, State *state) {
     symbols.push_back(symbol);
     states.push_back(state);
@@ -31,7 +43,8 @@ void Automaton::reduction(int n, Symbol *symbol) {
 
     int evaluation = evaluate(n, usedSymbols);
 
-    states.back()->Transition(*this, new Expression(evaluation));
+    auto expr = new Expression(evaluation);
+    states.back()->Transition(*this, expr);
     lexer->addSymbolToBuffer(symbol);
 }
 
@@ -41,15 +54,21 @@ int Automaton::evaluate(int n, deque<Symbol *> &symbolsToEval) {
         evaluation = ((Integer *) symbolsToEval.front())->getValue();
     } else if (n == 3) {
         if (*symbolsToEval.front() == OPEN_PAR) {
+            delete (symbolsToEval.front());
             symbolsToEval.pop_front();
             evaluation = ((Integer *) symbolsToEval.front())->getValue();
+            delete (symbolsToEval.front());
+            symbolsToEval.pop_front();
         } else {
             evaluation = ((Integer *) symbolsToEval.front())->getValue();
+            delete (symbolsToEval.front());
             symbolsToEval.pop_front();
             if (*symbolsToEval.front() == MULTIPLICATION) {
+                delete (symbolsToEval.front());
                 symbolsToEval.pop_front();
                 evaluation *= ((Integer *) symbolsToEval.front())->getValue();
             } else if (*symbolsToEval.front() == PLUS) {
+                delete (symbolsToEval.front());
                 symbolsToEval.pop_front();
                 evaluation += ((Integer *) symbolsToEval.front())->getValue();
             } else {
@@ -59,6 +78,8 @@ int Automaton::evaluate(int n, deque<Symbol *> &symbolsToEval) {
                      << endl;
             }
         }
+        delete (symbolsToEval.front());
+        symbolsToEval.pop_front();
     } else {
         // Should never occur
         cerr << "An unknown error occurred. "
