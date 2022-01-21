@@ -3,4 +3,4 @@ project(TP_4IFA_GL)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(TP_4IFA_GL main.cpp lexer.cpp automaton.cpp state.cpp symbol.cpp)
+add_executable(TP_4IFA_GL main.cpp lexer.h lexer.cpp automaton.h automaton.cpp state.h state.cpp symbol.h symbol.cpp)
