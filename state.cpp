@@ -2,6 +2,7 @@
 // Created by pauls on 21/01/2022.
 //
 
+#include <iostream>
 #include "state.h"
 
 State::State(string name) {
@@ -78,17 +79,11 @@ bool State2::Transition(Automaton &automaton, Symbol *symbol) {
 bool State3::Transition(Automaton &automaton, Symbol *symbol) {
     Transiting(symbol);
     switch (*symbol) {
-        case PLUS:
-            automaton.reduction(1, new Plus());
-            break;
         case MULTIPLICATION:
-            automaton.reduction(1, new Multiplication());
-            break;
         case CLOSE_PAR:
-            automaton.reduction(1, new ClosePar());
-            break;
         case END:
-            automaton.reduction(1, new End());
+        case PLUS:
+            automaton.reduction(1, symbol);
             break;
         default:
             automaton.shift(new Error(), nullptr);
@@ -157,17 +152,13 @@ bool State6::Transition(Automaton &automaton, Symbol *symbol) {
 bool State7::Transition(Automaton &automaton, Symbol *symbol) {
     Transiting(symbol);
     switch (*symbol) {
+        case END:
+        case CLOSE_PAR:
         case PLUS:
-            automaton.reduction(3, new Plus());
+            automaton.reduction(3, symbol);
             break;
         case MULTIPLICATION:
             automaton.shift(symbol, new State5());
-            break;
-        case CLOSE_PAR:
-            automaton.reduction(3, new ClosePar());
-            break;
-        case END:
-            automaton.reduction(3, new End());
             break;
         default:
             automaton.shift(new Error(), nullptr);
@@ -179,17 +170,11 @@ bool State7::Transition(Automaton &automaton, Symbol *symbol) {
 bool State8::Transition(Automaton &automaton, Symbol *symbol) {
     Transiting(symbol);
     switch (*symbol) {
-        case PLUS:
-            automaton.reduction(3, new Plus());
-            break;
-        case MULTIPLICATION:
-            automaton.reduction(3, new Multiplication());
-            break;
         case CLOSE_PAR:
-            automaton.reduction(3, new ClosePar());
-            break;
+        case MULTIPLICATION:
         case END:
-            automaton.reduction(3, new End());
+        case PLUS:
+            automaton.reduction(3, symbol);
             break;
         default:
             automaton.shift(new Error(), nullptr);
@@ -201,17 +186,11 @@ bool State8::Transition(Automaton &automaton, Symbol *symbol) {
 bool State9::Transition(Automaton &automaton, Symbol *symbol) {
     Transiting(symbol);
     switch (*symbol) {
-        case PLUS:
-            automaton.reduction(3, new Plus());
-            break;
-        case MULTIPLICATION:
-            automaton.reduction(3, new Multiplication());
-            break;
         case CLOSE_PAR:
-            automaton.reduction(3, new ClosePar());
-            break;
         case END:
-            automaton.reduction(3, new End());
+        case MULTIPLICATION:
+        case PLUS:
+            automaton.reduction(3, symbol);
             break;
         default:
             automaton.shift(new Error(), nullptr);

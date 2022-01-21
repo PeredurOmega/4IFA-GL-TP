@@ -1,3 +1,4 @@
+#include <utility>
 #include "lexer.h"
 
 Symbol *Lexer::Consult() {

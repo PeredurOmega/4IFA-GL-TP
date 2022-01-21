@@ -10,9 +10,7 @@
 #include <string>
 #include <vector>
 #include <deque>
-#include <utility>
 #include <deque>
-#include <iostream>
 
 #include "symbol.h"
 #include "state.h"
@@ -104,7 +102,7 @@ private:
      * size 3.
      * @return The evaluated value of the symbols.
      */
-    static int evaluate(int n, std::deque<Symbol *> &symbolsToEval);
+    static int evaluate(int n, deque<Symbol *> &symbolsToEval);
 };
 
 #endif //TP_4IFA_GL_AUTOMATON_H

@@ -2,6 +2,8 @@
 // Created by pauls on 21/01/2022.
 //
 
+#include <utility>
+#include <iostream>
 #include "automaton.h"
 
 Automaton::Automaton(string expr, bool negativeIntegerSupport) {

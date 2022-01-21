@@ -1,5 +1,5 @@
-#include "automaton.h"
 #include <iostream>
+#include "automaton.h"
 
 /**
  * Main function allowing the use of our Automaton.
@@ -11,7 +11,7 @@ int main() {
     cout << "Do you want to support negative integers ? Y/N " << endl;
     cin >> input;
     bool negativeIntegersSupport = false;
-    if (input == "Y") {
+    if (input == "Y" || input == "y") {
         negativeIntegersSupport = true;
         cout << "Support for negative integers enabled." << endl;
     } else {
