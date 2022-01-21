@@ -25,7 +25,7 @@ C++ version 11.
 
 # Example of execution
 
-## No debug
+### No debug
 `make run`    
 ```
 Do you want to support negative integers ? Y/N 
@@ -39,7 +39,7 @@ Enter an expression to compute or 'stop':
 Ending the process
 ```
 
-## With debug=true
+### With debug=true
 `make run`
 ```
 Do you want to support negative integers ? Y/N 
