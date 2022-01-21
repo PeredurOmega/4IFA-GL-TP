@@ -43,10 +43,10 @@ Ending the process
 `make run`
 ```
 Do you want to support negative integers ? Y/N 
-N
+> N
 Support for negative integers disabled.
 Enter an expression to compute or 'stop': 
-3*3+3
+> 3*3+3
 Transiting through the state I0
 With symbol:
     INT
@@ -97,7 +97,7 @@ With symbol:
     END
 Result: 12
 Enter an expression to compute or 'stop': 
-stop
+> stop
 Ending the process
 ````
 
