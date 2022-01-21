@@ -25,6 +25,7 @@ C++ version 11.
 
 # Example of execution
 
+## No debug
 `make run`    
 ```
 Do you want to support negative integers ? Y/N 
@@ -37,6 +38,69 @@ Enter an expression to compute or 'stop':
 > stop
 Ending the process
 ```
+
+## With debug=true
+`make run`
+```
+Do you want to support negative integers ? Y/N 
+N
+Support for negative integers disabled.
+Enter an expression to compute or 'stop': 
+3*3+3
+Transiting through the state I0
+With symbol:
+    INT
+Transiting through the state I3
+With symbol:
+    MULTIPLICATION
+Transiting through the state I0
+With symbol:
+    EXPR
+Transiting through the state I1
+With symbol:
+    MULTIPLICATION
+Transiting through the state I5
+With symbol:
+    INT
+Transiting through the state I3
+With symbol:
+    PLUS
+Transiting through the state I5
+With symbol:
+    EXPR
+Transiting through the state I8
+With symbol:
+    PLUS
+Transiting through the state I0
+With symbol:
+    EXPR
+Transiting through the state I1
+With symbol:
+    PLUS
+Transiting through the state I4
+With symbol:
+    INT
+Transiting through the state I3
+With symbol:
+    END
+Transiting through the state I4
+With symbol:
+    EXPR
+Transiting through the state I7
+With symbol:
+    END
+Transiting through the state I0
+With symbol:
+    EXPR
+Transiting through the state I1
+With symbol:
+    END
+Result: 12
+Enter an expression to compute or 'stop': 
+stop
+Ending the process
+````
+
 
 # States schema
 
