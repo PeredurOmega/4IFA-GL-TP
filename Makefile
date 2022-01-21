@@ -1,20 +1,30 @@
-all: analyzer
+CC=g++
+CFLAGS=-W -Wall -ansi -pedantic -std=c++0x
+LDFLAGS=
+EXEC=main
 
+all: $(EXEC)
 
-analyzer: lexer.o symbol.o main.o
-	g++ -std=c++11 -o analyzer lexer.o symbol.o main.o
+main: lexer.o symbol.o main.o automaton.o state.o
+	$(CC) -o $@ $^ $(LDFLAGS)
 
-lexer.o: lexer.cpp lexer.h
-	g++ -std=c++11 -o lexer.o -c lexer.cpp
+automaton.o: automaton.cpp
+	$(CC) -o $@ -c $< $(CFLAGS)
 
-symbol.o: symbol.cpp symbol.h
-	g++ -std=c++11 -o symbol.o -c symbol.cpp
+state.o: state.cpp
+	$(CC) -o $@ -c $< $(CFLAGS)
 
-main.o: main.cpp symbol.h lexer.h
-	g++ -std=c++11 -o main.o -c main.cpp
+lexer.o: lexer.cpp
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+symbol.o: symbol.cpp
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+main.o: main.cpp
+	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
 	rm -rf *.o
 
-clean_all: clean
-	rm -rf analyzer
+mrpropre: clean
+	rm -rf $(EXEC)
