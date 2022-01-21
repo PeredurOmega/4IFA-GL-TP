@@ -13,17 +13,17 @@
 using namespace std;
 
 enum Identifiers {
-    OPENPAR, CLOSEPAR, PLUS, MULT, INT, END, ERROR, EXPR
+    OPEN_PAR, CLOSE_PAR, PLUS, MULTIPLICATION, INT, END, ERROR, EXPR
 };
 
-const string Labels[] = {"OPENPAR", "CLOSEPAR", "PLUS", "MULT", "INT",
+const string Labels[] = {"OPEN_PAR", "CLOSE_PAR", "PLUS", "MULTIPLICATION", "INT",
                          "END", "ERROR", "EXPR"};
 
 class Symbol {
 public:
     Symbol(int i, bool terminal) : ident(i), terminal(terminal) {}
 
-    operator int() const { return ident; }
+    operator int() const { return ident; } // NOLINT(google-explicit-constructor)
 
     void Display() const;
 
@@ -34,9 +34,9 @@ protected:
     bool terminal;
 };
 
-class Expr : public Symbol {
+class Expression : public Symbol {
 public:
-    explicit Expr(int value) : Symbol(EXPR, false), value(value) {}
+    explicit Expression(int value) : Symbol(EXPR, false), value(value) {}
 
     void Display();
 
@@ -60,12 +60,12 @@ protected:
 
 class OpenPar : public Symbol {
 public:
-    OpenPar() : Symbol(OPENPAR, true) {}
+    OpenPar() : Symbol(OPEN_PAR, true) {}
 };
 
 class ClosePar : public Symbol {
 public:
-    ClosePar() : Symbol(CLOSEPAR, true) {}
+    ClosePar() : Symbol(CLOSE_PAR, true) {}
 };
 
 class Plus : public Symbol {
@@ -75,7 +75,7 @@ public:
 
 class Multiplication : public Symbol {
 public:
-    Multiplication() : Symbol(MULT, true) {}
+    Multiplication() : Symbol(MULTIPLICATION, true) {}
 };
 
 class End : public Symbol {

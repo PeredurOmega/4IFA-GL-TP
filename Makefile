@@ -1,8 +1,8 @@
-all: analyseur
+all: analyzer
 
 
-analyseur: lexer.o symbol.o main.o
-	g++ -std=c++11 -o analyseur lexer.o symbol.o main.o
+analyzer: lexer.o symbol.o main.o
+	g++ -std=c++11 -o analyzer lexer.o symbol.o main.o
 
 lexer.o: lexer.cpp lexer.h
 	g++ -std=c++11 -o lexer.o -c lexer.cpp
@@ -16,5 +16,5 @@ main.o: main.cpp symbol.h lexer.h
 clean:
 	rm -rf *.o
 
-cleanall: clean
-	rm -rf analyseur
+clean_all: clean
+	rm -rf analyzer

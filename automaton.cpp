@@ -23,29 +23,28 @@ void Automaton::reduction(int n, Symbol *s) {
     for (int i = 0; i < n; i++) {
         delete (states.back());
         states.pop_back();
-        usedSymbols.push_front(
-                symbols.back()); //TODO EVENTUALLY REPLACE WITH push_back + reverse
+        usedSymbols.push_front(symbols.back());
         symbols.pop_back();
     }
 
     int evaluation = evaluate(n, usedSymbols);
 
-    states.back()->Transition(*this, new Expr(evaluation));
-    //TODO lexer->addSymbolToBuffer(s);
+    states.back()->Transition(*this, new Expression(evaluation));
+    lexer->addSymbolToBuffer(s);
 }
 
 int Automaton::evaluate(int n, deque<Symbol *> &symbolsToEval) {
-    int evaluation;
+    int evaluation = 0;
     if (n == 1) {
         evaluation = ((Integer *) symbolsToEval.front())->getValue();
     } else if (n == 3) {
-        if (*symbolsToEval.front() == OPENPAR) {
+        if (*symbolsToEval.front() == OPEN_PAR) {
             symbolsToEval.pop_front();
             evaluation = ((Integer *) symbolsToEval.front())->getValue();
         } else {
             evaluation = ((Integer *) symbolsToEval.front())->getValue();
             symbolsToEval.pop_front();
-            if (*symbolsToEval.front() == MULT) {
+            if (*symbolsToEval.front() == MULTIPLICATION) {
                 symbolsToEval.pop_front();
                 evaluation *= ((Integer *) symbolsToEval.front())->getValue();
             } else if (*symbolsToEval.front() == PLUS) {
@@ -75,7 +74,7 @@ bool Automaton::run() {
         return false;
 
     } else {
-        int result = ((Expr *) symbols.back())->getValue();
+        int result = ((Expression *) symbols.back())->getValue();
         cout << "Result: " << result << endl;
         return true;
     }

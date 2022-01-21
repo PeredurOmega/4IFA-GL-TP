@@ -18,10 +18,12 @@
 #include <iostream>
 
 using namespace std;
+
 class State;
 
-class Automaton
-{
+class Lexer;
+
+class Automaton {
 public:
     explicit Automaton(string expr);
 

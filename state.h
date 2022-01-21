@@ -15,9 +15,9 @@ class Automaton;
 class State
 {
 public:
-    State(string name);
+    explicit State(string name);
 
-    ~State();
+    virtual ~State();
 
     virtual bool Transition(Automaton &automate, Symbol *symbol) = 0;
 

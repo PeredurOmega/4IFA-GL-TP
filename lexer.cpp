@@ -23,7 +23,16 @@ Symbol *Lexer::Consult() {
                     head++;
                     break;
                 default:
-                    if (flow[head] <= '9' && flow[head] >= '0') {
+                    if ((flow[head] <= '9' && flow[head] >= '0') ||
+                        (flow[head] == '-' && flow[head + 1] <= '9' &&
+                         flow[head + 1] >= '0')) {
+                        // Handling negative integers
+                        int positive = 1;
+                        if (flow[head] == '-') {
+                            head++;
+                            positive = -1;
+                        }
+
                         int result = flow[head] - '0';
                         int i = 1;
                         while (flow[head + i] <= '9' && flow[head + i] >= '0') {
@@ -31,7 +40,7 @@ Symbol *Lexer::Consult() {
                             i++;
                         }
                         head = head + i;
-                        buffer = new Integer(result);
+                        buffer = new Integer(positive * result);
                     } else {
                         buffer = new Error();
                     }
@@ -45,3 +54,15 @@ void Lexer::MoveForward() {
     buffer = nullptr;
 }
 
+void Lexer::addSymbolToBuffer(Symbol *s) {
+    buffer = s;
+/*
+    switch (*s) {
+        case PLUS:
+        case MULTIPLICATION:
+        case OPEN_PAR:
+        case CLOSE_PAR:
+            buffer = s;
+            break;
+    }*/
+}

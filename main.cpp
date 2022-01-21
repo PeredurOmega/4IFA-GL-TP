@@ -4,14 +4,17 @@
 
 int main() {
     string input;
-    bool retry;
 
-    do {
-        cout << "Enter an expression to compute: " << endl;
+    while (true) {
+        cout << "Enter an expression to compute or 'stop': " << endl;
         cin >> input;
+        if (input == "stop") {
+            cout << "Ending the process" << endl;
+            break;
+        }
         auto *automaton = new Automaton(input);
-        retry = !(automaton->run());
-    } while (retry);
+        automaton->run();
+    }
 
     return 0;
 }

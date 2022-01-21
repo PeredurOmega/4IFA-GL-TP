@@ -22,10 +22,13 @@ public:
 
     void MoveForward();
 
+    void addSymbolToBuffer(Symbol *s);
+
 protected:
     string flow;
-    int head;
+    size_t head;
     Symbol *buffer;
+
 };
 
 #endif //TP_4IFA_GL_LEXER_H

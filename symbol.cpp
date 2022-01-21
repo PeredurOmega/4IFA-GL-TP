@@ -13,7 +13,7 @@ void Integer::Display() {
     cout << "(" << value << ")";
 }
 
-void Expr::Display() {
+void Expression::Display() {
     Symbol::Display();
     cout << "(" << value << ")";
 }
