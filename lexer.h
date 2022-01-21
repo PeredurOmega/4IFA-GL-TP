@@ -1,23 +1,31 @@
+#ifndef TP_4IFA_GL_LEXER_H
+#define TP_4IFA_GL_LEXER_H
+
 #pragma once
 
+#include "state.h"
+#include "symbol.h"
+#include <utility>
 #include <string>
-#include "symbole.h"
 
 using namespace std;
 
 class Lexer {
 
 public:
-    Lexer(string s) : flux(s), tete(0), tampon(nullptr) {}
+    explicit Lexer(string expr) : flow(std::move(expr)), head(0),
+                                  buffer(nullptr) {}
 
-    ~Lexer() {}
+    ~Lexer() = default;
 
-    Symbole *Consulter();
+    Symbol *Consult();
 
-    void Avancer();
+    void MoveForward();
 
 protected:
-    string flux;
-    int tete;
-    Symbole *tampon;
+    string flow;
+    int head;
+    Symbol *buffer;
 };
+
+#endif //TP_4IFA_GL_LEXER_H

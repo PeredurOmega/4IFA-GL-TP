@@ -1,49 +1,47 @@
 #include "lexer.h"
 
-Symbole *Lexer::Consulter() {
-    if (!tampon) {
-
-        if (tete == flux.length())
-            tampon = new Symbole(FIN);
-        else {
-
-            switch (flux[tete]) {
+Symbol *Lexer::Consult() {
+    if (!buffer) {
+        if (head == flow.length()) {
+            buffer = new End();
+        } else {
+            switch (flow[head]) {
                 case '(':
-                    tampon = new Symbole(OPENPAR);
-                    tete++;
+                    buffer = new OpenPar();
+                    head++;
                     break;
                 case ')':
-                    tampon = new Symbole(CLOSEPAR);
-                    tete++;
+                    buffer = new ClosePar();
+                    head++;
                     break;
                 case '*':
-                    tampon = new Symbole(MULT);
-                    tete++;
+                    buffer = new Multiplication();
+                    head++;
                     break;
                 case '+':
-                    tampon = new Symbole(PLUS);
-                    tete++;
+                    buffer = new Plus();
+                    head++;
                     break;
                 default:
-                    if (flux[tete] <= '9' && flux[tete] >= '0') {
-                        int resultat = flux[tete] - '0';
+                    if (flow[head] <= '9' && flow[head] >= '0') {
+                        int result = flow[head] - '0';
                         int i = 1;
-                        while (flux[tete + i] <= '9' && flux[tete + i] >= '0') {
-                            resultat = resultat * 10 + (flux[tete + i] - '0');
+                        while (flow[head + i] <= '9' && flow[head + i] >= '0') {
+                            result = result * 10 + (flow[head + i] - '0');
                             i++;
                         }
-                        tete = tete + i;
-                        tampon = new Entier(resultat);
+                        head = head + i;
+                        buffer = new Integer(result);
                     } else {
-                        tampon = new Symbole(ERREUR);
+                        buffer = new Error();
                     }
             }
         }
     }
-    return tampon;
+    return buffer;
 }
 
-void Lexer::Avancer() {
-    tampon = nullptr;
+void Lexer::MoveForward() {
+    buffer = nullptr;
 }
 
