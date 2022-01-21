@@ -14,7 +14,7 @@ Activate the debug mode with "debug=true".
 ### `make clean`
 Delete binary files.
 
-### `make clean`
+### `make cleanall`
 Deletes the binary files and the "main" executable
 
 
