@@ -33,6 +33,7 @@ bool State0::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.shift(symbol, new State2());
             break;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }
@@ -49,8 +50,10 @@ bool State1::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.shift(symbol, new State5());
             break;
         case END:
+            delete (symbol);
             return false;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }
@@ -70,6 +73,7 @@ bool State2::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.shift(symbol, new State6());
             break;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }
@@ -86,6 +90,7 @@ bool State3::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.reduction(1, symbol);
             break;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }
@@ -105,6 +110,7 @@ bool State4::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.shift(symbol, new State7());
             break;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }
@@ -124,6 +130,7 @@ bool State5::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.shift(symbol, new State8());
             break;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }
@@ -143,6 +150,7 @@ bool State6::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.shift(symbol, new State9());
             break;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }
@@ -161,6 +169,7 @@ bool State7::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.shift(symbol, new State5());
             break;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }
@@ -177,6 +186,7 @@ bool State8::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.reduction(3, symbol);
             break;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }
@@ -193,6 +203,7 @@ bool State9::Transition(Automaton &automaton, Symbol *symbol) {
             automaton.reduction(3, symbol);
             break;
         default:
+            delete (symbol);
             automaton.shift(new Error(), nullptr);
             return false;
     }

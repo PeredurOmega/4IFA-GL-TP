@@ -26,10 +26,7 @@ public:
             buffer(nullptr),
             negativeIntegersSupport(negativeIntegersSupport) {}
 
-    /**
-     * Using the default destructor.
-     */
-    ~Lexer() = default;
+    ~Lexer();
 
     /**
      * Consult a symbol in the flow.

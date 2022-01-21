@@ -78,14 +78,14 @@ int Automaton::evaluate(int n, deque<Symbol *> &symbolsToEval) {
                      << endl;
             }
         }
-        delete (symbolsToEval.front());
-        symbolsToEval.pop_front();
     } else {
         // Should never occur
         cerr << "An unknown error occurred. "
              << "Be sure to use a valid expression."
              << endl;
     }
+    delete (symbolsToEval.front());
+    symbolsToEval.pop_front();
     return evaluation;
 }
 
@@ -101,7 +101,6 @@ bool Automaton::run() {
     if (*symbols.back() == ERROR) {
         cerr << "Error: Invalid expression." << endl << "Please retry." << endl;
         return false;
-
     } else {
         int result = ((Expression *) symbols.back())->getValue();
         cout << "Result: " << result << endl;

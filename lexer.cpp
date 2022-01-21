@@ -1,5 +1,10 @@
 #include "lexer.h"
 
+
+Lexer::~Lexer() {
+    delete (buffer);
+}
+
 Symbol *Lexer::Consult() {
     if (!buffer) {
         if (head == flow.length()) {
