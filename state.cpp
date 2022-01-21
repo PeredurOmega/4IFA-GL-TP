@@ -19,8 +19,6 @@ void State::Transiting(__attribute__((unused)) Symbol *symbol) {
 #endif
 }
 
-State::~State() = default;
-
 bool State0::Transition(Automaton &automaton, Symbol *symbol) {
     Transiting(symbol);
     switch (*symbol) {

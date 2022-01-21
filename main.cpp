@@ -1,7 +1,10 @@
-#include <iostream>
 #include "automaton.h"
+#include <iostream>
 
-
+/**
+ * Main function allowing the use of our Automaton.
+ * @return status
+ */
 int main() {
     string input;
 

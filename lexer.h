@@ -64,6 +64,10 @@ private:
      * Buffer to use.
      */
     Symbol *buffer;
+
+    /**
+     * True if we want to support negative integers, False otherwise.
+     */
     bool negativeIntegersSupport;
 
 };

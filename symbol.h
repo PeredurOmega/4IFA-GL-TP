@@ -12,22 +12,51 @@
 
 using namespace std;
 
+/**
+ * Enumeration of the different identifiers.
+ */
 enum Identifiers {
     OPEN_PAR, CLOSE_PAR, PLUS, MULTIPLICATION, INT, END, ERROR, EXPR
 };
 
+/**
+ * Symbol class (to be inherited from by the different symbols).
+ */
 class Symbol {
 public:
+    /**
+     * Constructor of Symbol.
+     * @param i Identifier (to provide from enum).
+     * @param terminal Whether it's terminal or not.
+     */
     Symbol(int i, bool terminal) : ident(i), terminal(terminal) {}
 
+    /**
+     * Auto convert to the identifier when attempting to test equality with an
+     * int.
+     * @return The identifier.
+     */
     operator int() const { return ident; } // NOLINT(google-explicit-constructor)
 
+    /**
+     * Debug the Symbol.
+     */
     void Display() const;
 
+    /**
+     * @return Whether the symbol is terminal or not.
+     */
     bool isTerminal() const { return terminal; }
 
 protected:
+    /**
+     * Identifier of the symbol.
+     */
     int ident;
+
+    /**
+     * Whether it's terminal or not.
+     */
     bool terminal;
 };
 
@@ -40,6 +69,9 @@ public:
     int getValue() const { return value; }
 
 protected:
+    /**
+     * Evaluated value of the expression.
+     */
     int value;
 };
 
@@ -52,6 +84,9 @@ public:
     int getValue() const { return value; }
 
 protected:
+    /**
+     * Evaluated value of the expression.
+     */
     int value;
 };
 

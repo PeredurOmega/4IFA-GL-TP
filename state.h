@@ -10,20 +10,46 @@
 #include "symbol.h"
 #include "automaton.h"
 
+/**
+ * Forward declaration of Automaton. Solve circular dependency issue.
+ */
 class Automaton;
 
+/**
+ * State class (to be inherited from all the states).
+ */
 class State {
 public:
+    /**
+     * Explicit constructor
+     * @param name Name of the state.
+     */
     explicit State(string name);
 
-    virtual ~State();
+    /**
+     * Default destructor.
+     */
+    virtual ~State() = default;
 
+    /**
+     * Make a transition.
+     * @param automate Automaton to use.
+     * @param symbol Current symbol in the transition.
+     * @return True there is a next transition, False otherwise.
+     */
     virtual bool Transition(Automaton &automate, Symbol *symbol) = 0;
 
 private:
+    /**
+     * Name of the state in the diagram.
+     */
     string name;
 
 protected:
+    /**
+     * Function used to debug (when transiting).
+     * @param symbol
+     */
     void Transiting(__attribute__((unused)) Symbol *symbol);
 };
 
