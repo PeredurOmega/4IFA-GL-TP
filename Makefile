@@ -1,7 +1,12 @@
 CC=g++
-CFLAGS=-W -Wall -ansi -pedantic -std=c++0x
-LDFLAGS=
+CFLAGS=-W -Wall -ansi -pedantic -std=c++0x 
+DFLAGS=
 EXEC=main
+
+ifdef debug
+    DFLAGS=-DDEBUG
+endif
+
 
 all: $(EXEC)
 
@@ -9,19 +14,19 @@ main: lexer.o symbol.o main.o automaton.o state.o
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 automaton.o: automaton.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS) $(DFLAGS)
 
 state.o: state.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS) $(DFLAGS)
 
 lexer.o: lexer.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS) $(DFLAGS)
 
 symbol.o: symbol.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS) $(DFLAGS)
 
 main.o: main.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS) $(DFLAGS)
 
 
 run: all
