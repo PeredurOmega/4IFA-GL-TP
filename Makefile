@@ -26,5 +26,5 @@ main.o: main.cpp
 clean:
 	rm -rf *.o
 
-mrpropre: clean
+clean_all: clean
 	rm -rf $(EXEC)

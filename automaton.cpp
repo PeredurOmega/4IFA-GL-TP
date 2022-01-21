@@ -18,7 +18,7 @@ void Automaton::shift(Symbol *symbol, State *state) {
     }
 }
 
-void Automaton::reduction(int n, Symbol *s) {
+void Automaton::reduction(int n, Symbol *symbol) {
     deque<Symbol *> usedSymbols;
     for (int i = 0; i < n; i++) {
         delete (states.back());
@@ -30,7 +30,7 @@ void Automaton::reduction(int n, Symbol *s) {
     int evaluation = evaluate(n, usedSymbols);
 
     states.back()->Transition(*this, new Expression(evaluation));
-    lexer->addSymbolToBuffer(s);
+    lexer->addSymbolToBuffer(symbol);
 }
 
 int Automaton::evaluate(int n, deque<Symbol *> &symbolsToEval) {
@@ -51,11 +51,17 @@ int Automaton::evaluate(int n, deque<Symbol *> &symbolsToEval) {
                 symbolsToEval.pop_front();
                 evaluation += ((Integer *) symbolsToEval.front())->getValue();
             } else {
-                //TODO ERROR
+                // Should never occur
+                cerr << "An unknown error occurred. "
+                     << "Be sure to use a valid expression."
+                     << endl;
             }
         }
     } else {
-        //TODO PRINT DEBUG ERROR
+        // Should never occur
+        cerr << "An unknown error occurred. "
+             << "Be sure to use a valid expression."
+             << endl;
     }
     return evaluation;
 }

@@ -64,13 +64,4 @@ void Lexer::MoveForward() {
 
 void Lexer::addSymbolToBuffer(Symbol *s) {
     buffer = s;
-/*
-    switch (*s) {
-        case PLUS:
-        case MULTIPLICATION:
-        case OPEN_PAR:
-        case CLOSE_PAR:
-            buffer = s;
-            break;
-    }*/
 }

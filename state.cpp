@@ -10,7 +10,10 @@ State::State(string name) {
 
 void State::Transiting(__attribute__((unused)) Symbol *symbol) {
 #if DEBUG
-    cout << "Transiting through the state " << name << endl << "With symbol:" << endl;
+    cout << "Transiting through the state "
+         << name
+         << endl << "With symbol:"
+         << endl;
     symbol->Display();
     cout << endl;
 #endif
