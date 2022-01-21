@@ -18,8 +18,10 @@
 #include <iostream>
 
 using namespace std;
+class State;
 
-class Automaton {
+class Automaton
+{
 public:
     explicit Automaton(string expr);
 
@@ -34,7 +36,7 @@ private:
     vector<State *> states;
     Lexer *lexer;
 
-    static int evaluate(int n, std::deque<Symbol *>& symbolsToEval);
+    static int evaluate(int n, std::deque<Symbol *> &symbolsToEval);
 };
 
 #endif //TP_4IFA_GL_AUTOMATON_H
