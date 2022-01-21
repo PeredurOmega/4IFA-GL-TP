@@ -23,8 +23,16 @@ Symbol *Lexer::Consult() {
                     head++;
                     break;
                 default:
+                    /* Experimental support for subtractions (not supporting parenthesis).
+                    if (subtractionsSupport && flow[head] == '-' && head > 0 &&
+                        flow[head - 1] <= '9' && flow[head - 1] >= '0') {
+                        buffer = new Plus();
+                        flow.insert(head, "-");
+                        head++;
+                    } else*/
                     if ((flow[head] <= '9' && flow[head] >= '0') ||
-                        (flow[head] == '-' && flow[head + 1] <= '9' &&
+                        (negativeIntegersSupport && flow[head] == '-' &&
+                         (head + 1) < flow.size() && flow[head + 1] <= '9' &&
                          flow[head + 1] >= '0')) {
                         // Handling negative integers
                         int positive = 1;

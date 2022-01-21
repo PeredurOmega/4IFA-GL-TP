@@ -4,8 +4,8 @@
 
 #include "automaton.h"
 
-Automaton::Automaton(string expr) {
-    this->lexer = new Lexer(std::move(expr));
+Automaton::Automaton(string expr, bool negativeIntegerSupport) {
+    this->lexer = new Lexer(std::move(expr), negativeIntegerSupport);
     auto *init = new State0();
     states.push_back(init);
 }

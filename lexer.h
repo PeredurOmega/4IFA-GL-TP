@@ -13,8 +13,11 @@ using namespace std;
 class Lexer {
 
 public:
-    explicit Lexer(string expr) : flow(std::move(expr)), head(0),
-                                  buffer(nullptr) {}
+    explicit Lexer(string expr, bool negativeIntegersSupport) :
+            flow(std::move(expr)),
+            head(0),
+            buffer(nullptr),
+            negativeIntegersSupport(negativeIntegersSupport) {}
 
     ~Lexer() = default;
 
@@ -24,10 +27,11 @@ public:
 
     void addSymbolToBuffer(Symbol *s);
 
-protected:
+private:
     string flow;
     size_t head;
     Symbol *buffer;
+    bool negativeIntegersSupport;
 
 };
 

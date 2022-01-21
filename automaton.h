@@ -25,7 +25,7 @@ class Lexer;
 
 class Automaton {
 public:
-    explicit Automaton(string expr);
+    explicit Automaton(string expr, bool negativeIntegersSupport);
 
     bool run();
 

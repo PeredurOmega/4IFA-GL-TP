@@ -16,9 +16,6 @@ enum Identifiers {
     OPEN_PAR, CLOSE_PAR, PLUS, MULTIPLICATION, INT, END, ERROR, EXPR
 };
 
-const string Labels[] = {"OPEN_PAR", "CLOSE_PAR", "PLUS", "MULTIPLICATION", "INT",
-                         "END", "ERROR", "EXPR"};
-
 class Symbol {
 public:
     Symbol(int i, bool terminal) : ident(i), terminal(terminal) {}
@@ -38,7 +35,7 @@ class Expression : public Symbol {
 public:
     explicit Expression(int value) : Symbol(EXPR, false), value(value) {}
 
-    void Display();
+    __attribute__((unused)) void Display();
 
     int getValue() const { return value; }
 
@@ -50,7 +47,7 @@ class Integer : public Symbol {
 public:
     explicit Integer(int v) : Symbol(INT, true), value(v) {}
 
-    void Display();
+    __attribute__((unused)) void Display();
 
     int getValue() const { return value; }
 
