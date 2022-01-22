@@ -1,32 +1,54 @@
-# Makefile
+# Bottom-up analyzer (C++) for arithmetical expressions
+
+Bottom-up analyzer implemented with the State design pattern to evaluate
+arithmetical expressions.
+
+### Grammar
+
+The grammar analyzer is based on the following grammar:
+
+```
+1. E' -> E
+2. E  -> E + E
+3. E  -> E * E
+4. E  -> ( E )
+5. E  -> val
+```
+
+## Requirements
+
+C++ version 11 or greater.
+
+## Makefile
 
 ### `make [debug=true]`
-Generates binary files (.o) and the project executable "main".
-Activate the debug mode with "debug=true".
+
+Generates binary files (.o) and the project executable "main". Activate the
+debug mode with "debug=true".
 
 ### `make run`
+
 Generates the executable if it does not already exist, and executes it.
 
 ### `make rebuild [debug=true]`
-Force deletion of files to rebuild them.
-Activate the debug mode with "debug=true".
+
+Force deletion of files to rebuild them. Activate the debug mode with "
+debug=true".
 
 ### `make clean`
+
 Delete binary files.
 
 ### `make cleanall`
+
 Deletes the binary files and the "main" executable
-
-
-# Requirements
-
-C++ version 11.
-
 
 # Example of execution
 
 ### No debug
-`make run`    
+
+`make run`
+
 ```
 Do you want to support negative integers ? Y/N 
 > Y
@@ -40,7 +62,9 @@ Ending the process
 ```
 
 ### With debug=true
+
 `make run`
+
 ```
 Do you want to support negative integers ? Y/N 
 > N
@@ -101,10 +125,37 @@ Enter an expression to compute or 'stop':
 Ending the process
 ````
 
+# LALR(1) Analysis table of the grammar
+
+| **States** | **val** | **+** | *   | **(** | **)** | **$**  |     | **E** |
+|------------|---------|-------|-----|-------|-------|--------|-----|-------|
+| **0**      | d3      |       |     | d2    |       |        |     | 1     |
+| **1**      |         | d4    | d5  |       |       | accept |     |       |
+| **2**      | d3      |       |     | d2    |       |        |     | 6     |
+| **3**      |         | r5    | r5  |       | r5    | r5     |     |       |
+| **4**      | d3      |       |     | d2    |       |        |     | 7     |
+| **5**      | d3      |       |     | d2    |       |        |     | 8     |
+| **6**      |         | d4    | d5  |       | d9    |        |     |       |
+| **7**      |         | r2    | d5  |       | r2    | r2     |     |       |
+| **8**      |         | r3    | r3  |       | r3    | r3     |     |       |
+| **9**      |         | r4    | r4  |       | r4    | r4     |     |       |
 
 # States schema
 
 ![alt text](./img/states_schema.png)
 
+# Final notes
 
+In this project we took care of commenting all major aspects of the code.
 
+In addition, we eliminated all issues reported by valgrind.
+
+We also made extensive tests to ensure our work was able to answer properly to
+all the expressions following the grammar.
+
+Moreover, to fully respect the grammar we implemented a way to support negative
+integers in our lexer.
+
+Furthermore, we tried to extend the grammar with some experimental features
+(not present in the final release), without editing the states (for instance by
+trying to support subtractions only by editing the lexer).
