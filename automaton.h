@@ -1,5 +1,5 @@
 //
-// Created by pauls on 21/01/2022.
+// Created by Paul SOUTEYRAT & Alexandre MARTIN on 21/01/2022.
 //
 
 #ifndef TP_4IFA_GL_AUTOMATON_H
@@ -32,7 +32,8 @@ class Lexer;
  * Automaton LALR for a bottom up analysis with the State design pattern and
  * using the vector data structure.
  */
-class Automaton {
+class Automaton
+{
 public:
     /**
      * Explicit Automaton constructor.

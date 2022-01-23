@@ -1,5 +1,5 @@
 //
-// Created by pauls on 21/01/2022.
+// Created by Paul SOUTEYRAT & Alexandre MARTIN on 21/01/2022.
 //
 
 #ifndef TP_4IFA_GL_SYMBOL_H
@@ -15,14 +15,23 @@ using namespace std;
 /**
  * Enumeration of the different identifiers.
  */
-enum Identifiers {
-    OPEN_PAR, CLOSE_PAR, PLUS, MULTIPLICATION, INT, END, ERROR, EXPR
+enum Identifiers
+{
+    OPEN_PAR,
+    CLOSE_PAR,
+    PLUS,
+    MULTIPLICATION,
+    INT,
+    END,
+    ERROR,
+    EXPR
 };
 
 /**
  * Symbol class (to be inherited from by the different symbols).
  */
-class Symbol {
+class Symbol
+{
 public:
     /**
      * Constructor of Symbol.
@@ -60,7 +69,8 @@ protected:
     bool terminal;
 };
 
-class Expression : public Symbol {
+class Expression : public Symbol
+{
 public:
     explicit Expression(int value) : Symbol(EXPR, false), value(value) {}
 
@@ -75,7 +85,8 @@ protected:
     int value;
 };
 
-class Integer : public Symbol {
+class Integer : public Symbol
+{
 public:
     explicit Integer(int v) : Symbol(INT, true), value(v) {}
 
@@ -90,32 +101,38 @@ protected:
     int value;
 };
 
-class OpenPar : public Symbol {
+class OpenPar : public Symbol
+{
 public:
     OpenPar() : Symbol(OPEN_PAR, true) {}
 };
 
-class ClosePar : public Symbol {
+class ClosePar : public Symbol
+{
 public:
     ClosePar() : Symbol(CLOSE_PAR, true) {}
 };
 
-class Plus : public Symbol {
+class Plus : public Symbol
+{
 public:
     Plus() : Symbol(PLUS, true) {}
 };
 
-class Multiplication : public Symbol {
+class Multiplication : public Symbol
+{
 public:
     Multiplication() : Symbol(MULTIPLICATION, true) {}
 };
 
-class End : public Symbol {
+class End : public Symbol
+{
 public:
     End() : Symbol(END, true) {}
 };
 
-class Error : public Symbol {
+class Error : public Symbol
+{
 public:
     Error() : Symbol(ERROR, true) {}
 };

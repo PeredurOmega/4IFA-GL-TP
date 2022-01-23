@@ -1,3 +1,5 @@
+// Created by Paul SOUTEYRAT & Alexandre MARTIN on 21/01/2022.
+
 #ifndef TP_4IFA_GL_LEXER_H
 #define TP_4IFA_GL_LEXER_H
 
@@ -12,7 +14,8 @@ using namespace std;
 /**
  * Lexical analyzer to consult the different Symbol to use in the flow.
  */
-class Lexer {
+class Lexer
+{
 public:
     /**
      * Constructor of the Lexer.
@@ -20,11 +23,10 @@ public:
      * @param negativeIntegersSupport True to support negative integers, False
      * otherwise.
      */
-    explicit Lexer(string expr, bool negativeIntegersSupport) :
-            flow(std::move(expr)),
-            head(0),
-            buffer(nullptr),
-            negativeIntegersSupport(negativeIntegersSupport) {}
+    explicit Lexer(string expr, bool negativeIntegersSupport) : flow(std::move(expr)),
+                                                                head(0),
+                                                                buffer(nullptr),
+                                                                negativeIntegersSupport(negativeIntegersSupport) {}
 
     ~Lexer();
 
@@ -65,7 +67,6 @@ private:
      * True if we want to support negative integers, False otherwise.
      */
     bool negativeIntegersSupport;
-
 };
 
 #endif //TP_4IFA_GL_LEXER_H

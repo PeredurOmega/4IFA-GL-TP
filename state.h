@@ -1,5 +1,5 @@
 //
-// Created by pauls on 21/01/2022.
+// Created by Paul SOUTEYRAT & Alexandre MARTIN on 21/01/2022.
 //
 
 #ifndef TP_4IFA_GL_STATE_H
@@ -18,7 +18,8 @@ class Automaton;
 /**
  * State class (to be inherited from all the states).
  */
-class State {
+class State
+{
 public:
     /**
      * Explicit constructor
@@ -53,72 +54,82 @@ protected:
     void Transiting(__attribute__((unused)) Symbol *symbol);
 };
 
-class State0 : public State {
+class State0 : public State
+{
 public:
-    State0() : State("I0") {};
+    State0() : State("I0"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
 
-class State1 : public State {
+class State1 : public State
+{
 public:
-    State1() : State("I1") {};
+    State1() : State("I1"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
 
-class State2 : public State {
+class State2 : public State
+{
 public:
-    State2() : State("I2") {};
+    State2() : State("I2"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
 
-class State3 : public State {
+class State3 : public State
+{
 public:
-    State3() : State("I3") {};
+    State3() : State("I3"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
 
-class State4 : public State {
+class State4 : public State
+{
 public:
-    State4() : State("I4") {};
+    State4() : State("I4"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
 
-class State5 : public State {
+class State5 : public State
+{
 public:
-    State5() : State("I5") {};
+    State5() : State("I5"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
 
-class State6 : public State {
+class State6 : public State
+{
 public:
-    State6() : State("I6") {};
+    State6() : State("I6"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
 
-class State7 : public State {
+class State7 : public State
+{
 public:
-    State7() : State("I7") {};
+    State7() : State("I7"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
 
-class State8 : public State {
+class State8 : public State
+{
 public:
-    State8() : State("I8") {};
+    State8() : State("I8"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
 
-class State9 : public State {
+class State9 : public State
+{
 public:
-    State9() : State("I9") {};
+    State9() : State("I9"){};
 
     bool Transition(Automaton &automate, Symbol *symbol) override;
 };
