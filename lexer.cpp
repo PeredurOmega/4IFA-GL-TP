@@ -12,7 +12,6 @@ Symbol *Lexer::Consult() {
         if (head == flow.length()) {
             buffer = new End();
         } else {
-            cout << flow[head] << endl;
             switch (flow[head]) {
                 case '(':
                     buffer = new OpenPar();
@@ -61,7 +60,6 @@ Symbol *Lexer::Consult() {
                             i++;
                         }
                         head = head + i;
-                        cout << sign * result << endl;
                         buffer = new Integer(sign * result);
                     } else {
                         buffer = new Error();
