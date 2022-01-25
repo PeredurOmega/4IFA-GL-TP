@@ -12,7 +12,7 @@
 #include <deque>
 #include <deque>
 
-#include "symbol.h"
+#include "symbols.h"
 #include "state.h"
 #include "lexer.h"
 
@@ -32,8 +32,7 @@ class Lexer;
  * Automaton LALR for a bottom up analysis with the State design pattern and
  * using the vector data structure.
  */
-class Automaton
-{
+class Automaton {
 public:
     /**
      * Explicit Automaton constructor.
@@ -101,11 +100,11 @@ private:
      * For instance, '4' returns 4. '4+4' returns 8. '4*4' returns 24.
      * '(4)' returns 4.
      * @param n Size of symbolsToEval.
-     * @param symbolsToEval Dequeue of the symbols to evaluate should be of
-     * size 3.
+     * @param symbolsToEval Vector of the symbols to evaluate should be of
+     * size 3 or 1 (equal to n).
      * @return The evaluated value of the symbols.
      */
-    static int evaluate(int n, deque<Symbol *> &symbolsToEval);
+    static Expression *evaluate(int n, vector<Symbol *> &symbolsToEval);
 };
 
 #endif //TP_4IFA_GL_AUTOMATON_H

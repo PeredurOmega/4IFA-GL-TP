@@ -7,15 +7,14 @@
 
 #include <string>
 #include "state.h"
-#include "symbol.h"
+#include "symbols.h"
 
 using namespace std;
 
 /**
  * Lexical analyzer to consult the different Symbol to use in the flow.
  */
-class Lexer
-{
+class Lexer {
 public:
     /**
      * Constructor of the Lexer.
@@ -23,10 +22,9 @@ public:
      * @param negativeIntegersSupport True to support negative integers, False
      * otherwise.
      */
-    explicit Lexer(string expr, bool negativeIntegersSupport) : flow(std::move(expr)),
-                                                                head(0),
-                                                                buffer(nullptr),
-                                                                negativeIntegersSupport(negativeIntegersSupport) {}
+    explicit Lexer(string expr, bool negativeIntegersSupport) :
+            flow(std::move(expr)), head(0), buffer(nullptr),
+            negativeIntegersSupport(negativeIntegersSupport) {}
 
     ~Lexer();
 

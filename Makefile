@@ -7,10 +7,9 @@ ifdef debug
     DFLAGS=-DDEBUG
 endif
 
-
 all: $(EXEC)
 
-main: lexer.o symbol.o main.o automaton.o state.o
+main: lexer.o symbols.o main.o automaton.o state.o
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 automaton.o: automaton.cpp
@@ -22,7 +21,7 @@ state.o: state.cpp
 lexer.o: lexer.cpp
 	$(CC) -o $@ -c $< $(CFLAGS) $(DFLAGS)
 
-symbol.o: symbol.cpp
+symbols.o: symbols.cpp
 	$(CC) -o $@ -c $< $(CFLAGS) $(DFLAGS)
 
 main.o: main.cpp
@@ -41,7 +40,3 @@ clean:
 cleanall: clean
 	@rm -rf $(EXEC)
 	@echo "Executable deleted."
-
-
-
-

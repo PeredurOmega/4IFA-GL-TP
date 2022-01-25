@@ -7,29 +7,23 @@
  * Main function allowing the use of our Automaton.
  * @return status
  */
-int main()
-{
+int main() {
     string input;
 
     cout << "Do you want to support negative integers ? Y/N " << endl;
-    cin >> input;
+    getline(cin, input);
     bool negativeIntegersSupport = false;
-    if (input == "Y" || input == "y")
-    {
+    if (input == "Y" || input == "y") {
         negativeIntegersSupport = true;
         cout << "Support for negative integers enabled." << endl;
-    }
-    else
-    {
+    } else {
         cout << "Support for negative integers disabled." << endl;
     }
 
-    while (true)
-    {
+    while (true) {
         cout << "Enter an expression to compute or 'stop': " << endl;
-        cin >> input;
-        if (input == "stop")
-        {
+        getline(cin, input);
+        if (input == "stop") {
             cout << "Ending the process" << endl;
             break;
         }

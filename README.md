@@ -154,7 +154,7 @@ We also made extensive tests to ensure our work was able to answer properly to
 all the expressions following the grammar.
 
 Moreover, to fully respect the grammar we implemented a way to support negative
-integers in our lexer.
+integers in our lexer. We also added support for spaces in inputted expression.
 
 Furthermore, we tried to extend the grammar with some experimental features
 (not present in the final release), without editing the states (for instance by
